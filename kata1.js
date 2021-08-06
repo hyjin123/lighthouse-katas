@@ -1,7 +1,6 @@
 // given an array with 2 or more numbers, find the two largest numbers in that array and sum them
 const sumLargestNumbers = function(data) {
   let newArray = [];
-  let sum = 0;
   let max = 0;
   let secondMax = 0;
   let maxIndex = 0;
