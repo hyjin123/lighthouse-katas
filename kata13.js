@@ -45,16 +45,16 @@ const talkingCalendar = function (date) {
       break;
   }
 
-  if (day[0] !== "0") {
+  if (day[0] !== "0") { //if first digit is not 0, add to the new day string
     newDay += day[0];
   }
-  if (day[0] === "0" && day[1] === "1") {
+  if (day[0] === "0" && day[1] === "1") { //if first digit is 0 and second is 1, add "st"
     newDay += day[1];
     newDay += "st";
-  } else if (day[0] === "0" && day[1] === "2") {
+  } else if (day[0] === "0" && day[1] === "2") { //if first digit is 0 and second is 2, add "nd"
     newDay += day[1];
     newDay += "nd";
-  } else if (day[0] === "0" && day[1] === "3") {
+  } else if (day[0] === "0" && day[1] === "3") { //if first digit is 0 and second is 3, add "rd"
     newDay += day[1];
     newDay += "rd";
   } else {
