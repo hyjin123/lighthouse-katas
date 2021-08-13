@@ -1,6 +1,6 @@
 //write a function that helps determine which recipes match the ingredients that both bakeries have in stock
-const ingredientCheck = function(bakery, recipes) {
-  let matchedIngredients = [];
+const ingredientCheck = function(bakery, recipes) { //this function checks each bakery for each recipes
+  let matchedIngredients = []; //store the matched ingredients
   for (let i = 0; i < bakery.length; i++) {
     for (let j = 0; j < recipes.length; j++) {
       if (bakery[i] === recipes[j].ingredients[0] || bakery[i] === recipes[j].ingredients[1]) {
@@ -12,15 +12,15 @@ const ingredientCheck = function(bakery, recipes) {
 }
 
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
-  let ingredientA = ingredientCheck(bakeryA, recipes);
-  let ingredientB = ingredientCheck(bakeryB, recipes);
+  let ingredientA = ingredientCheck(bakeryA, recipes); //store all the matched ingredients in bakeryA in this variable
+  let ingredientB = ingredientCheck(bakeryB, recipes); //store all the matched ingredients in bakeryB in this variable
   for (let i = 0; i < ingredientA.length; i++) {
     for (let j = 0; j < ingredientB.length; j++) {
       for (let k = 0; k < recipes.length; k++) {
         if ((ingredientA[i] === recipes[k].ingredients[0] || ingredientA[i] === recipes[k].ingredients[1]) &&
             (ingredientB[j] === recipes[k].ingredients[0] || ingredientB[j] === recipes[k].ingredients[1])
         ) {
-          return recipes[k].name;
+          return recipes[k].name; //IF recipe has ingredients from both BakeryA and BakeryB, return the name
         }
       }
     }

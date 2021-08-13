@@ -1,13 +1,70 @@
 //converting date strings into more English friendly date strings
-const talkingCalendar = function(date) {
-  let newDateArray = [];
-  for (let i = 5; i < date.length; i++) {
-    
+const talkingCalendar = function (date) {
+  let newDate = ""; //store the new date format here
+  const partsString = date.split("/");// split the date into 3 parts
+  let year = partsString[0];
+  let month = partsString[1];
+  let day = partsString[2];
+  let newDay = "";
+  switch (month) {
+    case "01":
+      month = "January";
+      break;
+    case "02":
+      month = "February";
+      break;
+    case "03":
+      month = "March";
+      break;
+    case "04":
+      month = "April";
+      break;
+    case "05":
+      month = "May";
+      break;
+    case "06":
+      month = "June";
+      break;
+    case "07":
+      month = "July";
+      break;
+    case "08":
+      month = "August";
+      break;
+    case "09":
+      month = "September";
+      break;
+    case "10":
+      month = "October";
+      break;
+    case "11":
+      month = "November";
+      break;
+    case "12":
+      month = "December";
+      break;
   }
-  let newDate = newDateArray.join("/");
-  return newDate;
+
+  if (day[0] !== "0") {
+    newDay += day[0];
+  }
+  if (day[0] === "0" && day[1] === "1") {
+    newDay += day[1];
+    newDay += "st";
+  } else if (day[0] === "0" && day[1] === "2") {
+    newDay += day[1];
+    newDay += "nd";
+  } else if (day[0] === "0" && day[1] === "3") {
+    newDay += day[1];
+    newDay += "rd";
+  } else {
+    newDay += day[1];
+    newDay += "th";
+  }
+  return newDate = `${month} ${newDay}, ${year}`;
 };
 
 console.log(talkingCalendar("2017/12/02"));
 console.log(talkingCalendar("2007/11/11"));
 console.log(talkingCalendar("1987/08/24"));
+console.log(talkingCalendar("1893/01/05"));
