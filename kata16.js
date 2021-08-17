@@ -85,6 +85,15 @@ const consonant = function (input) {
   return newString;
 }
 
+const upper = function (input) {
+  let newString = input.toUpperCase();
+  return newString;
+}
+
+const lower = function (input) {
+  let newString = input.toLowerCase();
+  return newString;
+}
 
 const makeCase = function (input, cases) {
   switch (cases) {
@@ -103,23 +112,42 @@ const makeCase = function (input, cases) {
     case "consonant":
       return consonant(input);
     default:
+      let newString;
       if (typeof cases === "object") {
         for (let i = 0; i < cases.length; i++) {
           if (cases[i] === "camel") {
-            return camel(input);
+            newString = camel(input);
           } else if (cases[i] === "pascal") {
-            return pascal(input);
+            newString = pascal(input);
           } else if (cases[i] === "snake") {
-            return snake(input);
+            newString = snake(input);
           } else if (cases[i] === "kebab") {
-            return kebab(input);
+            newString = kebab(input);
           } else if (cases[i] === "title") {
-            return title(input);
+            newString = title(input);
           }
         }
       }
+      if (typeof cases === "object") {
+        for (let i = 0; i < cases.length; i++) {
+          if (cases[i] === "vowel") {
+            newString = vowel(newString);
+          } else if (cases[i] === "consonant") {
+            newString = consonant(newString);
+          }
+        }
+      }
+      if (typeof cases === "object") {
+        for (let i = 0; i < cases.length; i++) {
+          if (cases[i] === "upper") {
+            newString = upper(newString);
+          } else if (cases[i] === "lower") {
+            newString = lower(newString);
+          }
+        }
+      }
+      return newString;
   }
-
 }
 
 console.log(makeCase("this is a string", "camel"));
@@ -130,22 +158,5 @@ console.log(makeCase("this is a string", "title"));
 console.log(makeCase("this is a string", "vowel"));
 console.log(makeCase("this is a string", "consonant"));
 console.log(makeCase("this is a string", ["upper", "snake"]));
-
-/*
-vowels - a e i o u
-
-thisIsAString
-ThisIsAString
-this_is_a_string
-this-is-a-string
-This Is A String
-thIs Is A strIng
-THiS iS a STRiNG
-THIS_IS_A_STRING
-
-higher number should be processed first
-1. camel, pascal, snake, kebab, title
-2. vowel, consonant
-3. upper, lower
-
-*/
+console.log(makeCase("this is a string", ["kebab", "lower"]));
+console.log(makeCase("this is a string", ["kebab", "vowel"]));
