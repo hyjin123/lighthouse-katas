@@ -35,13 +35,10 @@ const queenThreat = function (generatedBoard) {
   } else if (whiteQueen[1] === blackQueen[1]) {
     vertical = true;
   }
-  //check if they are diagonal of each other
-  for (let i = 0; i < generateBoard.length; i++) {
-    for (let j = 0; j < generatedBoard[i].length; j++) {
-      if (generatedBoard[i][j] === 1) {
-
-      }
-    }
+  //check if they are diagonal of each other, 
+  //if the absolute value of the difference of rows and absolute value of the difference of columns match, they are diagonal.
+  if (Math.abs(whiteQueen[0] - blackQueen[0]) === Math.abs(whiteQueen[1] - blackQueen[1])) {
+    diagonal = true;
   }
   //if any of the horizontal, vertical, and diagonal is true, they can attack, set true
   if (vertical === true || horizontal === true || diagonal === true) {
@@ -58,8 +55,8 @@ let generatedBoard = generateBoard(whiteQueen, blackQueen);
 console.log(generatedBoard);
 console.log(queenThreat(generatedBoard));
 */
-let whiteQueen = [0, 3];
-let blackQueen = [1, 4];
+let whiteQueen = [2, 4];
+let blackQueen = [5, 7];
 let generatedBoard = generateBoard(whiteQueen, blackQueen);
 console.log(generatedBoard);
 console.log(queenThreat(generatedBoard));
@@ -71,4 +68,5 @@ for diagonal?
 [2,4]
 is diagonal with
 [0,2] [0,6], [1,3], [1,5] [3,3] [3,5] [4,2] [4,6] [5,1] [5,7]
+
 */
